@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: rootProject.projectDir.absolutePath + "/dependencies.gradle"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.italo.pokedex"
+        minSdkVersion min_version
+        targetSdkVersion compile_version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation kotlin_stdlib
+    implementation core_ktx
+    implementation appcompat
+    implementation material
+    implementation constraintlayout
+    implementation navigation_fragment_ktx
+    implementation navigation_ui_ktx
+    implementation fragment_ktx
+    implementation jetpack_preferences
+
+    implementation hilt_android
+    kapt kapt_hilt_compiler
+
+    implementation retrofit
+    implementation retrofit_converter
+    implementation logging_interceptor
+
+    implementation picasso
+
+}
